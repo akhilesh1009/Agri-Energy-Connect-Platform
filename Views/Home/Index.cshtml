@@ -1,0 +1,286 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Hero Section with Background Image -->
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto text-center">
+                <h1 class="hero-title mb-4">Welcome to Agri-Energy Connect</h1>
+                <p class="hero-subtitle mb-5">Revolutionizing agriculture through sustainable energy solutions</p>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div class="hero-buttons">
+                        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary btn-lg me-3 pulse-btn">Get Started</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="hero-buttons">
+                        <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg pulse-btn">Explore Products</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="wave-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+</div>
+
+<!-- Stats Counter Section -->
+<div class="container stats-section">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="counter-card">
+                <div class="counter-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="counter">500+</h2>
+                <p>Farmers Connected</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="counter-card">
+                <div class="counter-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <h2 class="counter">300+</h2>
+                <p>Energy Solutions</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="counter-card">
+                <div class="counter-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h2 class="counter">1200+</h2>
+                <p>Sustainable Products</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container features-section">
+    <div class="row mb-5">
+        <div class="col-md-12 text-center">
+            <h2 class="section-title">Our <span class="text-gradient">Features</span></h2>
+            <p class="section-subtitle">Discover what makes Agri-Energy Connect the leading platform for sustainable farming</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustainable Farming Hub</h3>
+                <p>Access resources for organic farming techniques, water conservation methods, and soil health maintenance.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" class="btn btn-outline-primary">Explore Resources</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Green Energy Marketplace</h3>
+                <p>Discover green energy technologies tailored for agricultural needs, from solar-powered irrigation to biogas solutions.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" class="btn btn-outline-primary">Browse Solutions</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <h3>Products Marketplace</h3>
+                <p>Connect with farmers and browse sustainable agricultural products or list your own farm products.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">View Products</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Educational Resources</h3>
+                <p>Access webinars, workshops, and courses on integrating green energy technologies in agriculture.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" class="btn btn-outline-primary">Start Learning</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Collaboration Platform</h3>
+                <p>Connect with experts and other farmers to collaborate on joint sustainable farming projects.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" class="btn btn-outline-primary">Find Partners</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Funding Opportunities</h3>
+                <p>Discover grants, subsidies, and funding opportunities for green initiatives in agriculture.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" class="btn btn-outline-primary">Find Funding</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="cta-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto text-center">
+                <h2 class="cta-title">Ready to Transform Your Agricultural Practices?</h2>
+                <p class="cta-subtitle">Join thousands of farmers who are already benefiting from sustainable energy solutions</p>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-light btn-lg mt-4">Sign Up Now</a>
+                }
+                else
+                {
+                    @if (User.IsInRole("Farmer"))
+                    {
+                        <a asp-controller="Product" asp-action="CreateProduct" class="btn btn-light btn-lg mt-4">Add Your Products</a>
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <a asp-controller="Product" asp-action="AddFarmerProfile" class="btn btn-light btn-lg mt-4">Add New Farmer</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions for Authenticated Users -->
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container quick-actions-section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="quick-actions-card">
+                    <h3>Quick Actions</h3>
+                    <div class="d-flex flex-wrap gap-3">
+                        @if (User.IsInRole("Farmer"))
+                        {
+                            <a asp-controller="Product" asp-action="CreateProduct" class="btn btn-primary">
+                                <i class="fas fa-plus-circle me-2"></i> Add New Product
+                            </a>
+                            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">
+                                <i class="fas fa-list me-2"></i> My Products
+                            </a>
+                        }
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <a asp-controller="Product" asp-action="AddFarmerProfile" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i> Add Farmer Profile
+                            </a>
+                            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">
+                                <i class="fas fa-search me-2"></i> Browse Products
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Testimonials Section -->
+<div class="container testimonials-section">
+    <div class="row mb-5">
+        <div class="col-md-12 text-center">
+            <h2 class="section-title">What Our <span class="text-gradient">Users Say</span></h2>
+            <p class="section-subtitle">Hear from farmers and energy experts who have transformed their practices</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Agri-Energy Connect helped me implement solar-powered irrigation, reducing my energy costs by 40% while maintaining crop yields."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h5>Ethan Huntly</h5>
+                        <p>Organic Farmer, Cape Town</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"The platform connected me with experts who helped me transition to sustainable farming practices, improving soil health and productivity."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h5>Bobby Lee</h5>
+                        <p>Dairy Farmer, Johannesburg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"As an energy consultant, I've found Agri-Energy Connect to be the perfect platform to reach farmers interested in sustainable solutions."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h5>Jane Michael</h5>
+                        <p>Green Energy Consultant, Durban</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

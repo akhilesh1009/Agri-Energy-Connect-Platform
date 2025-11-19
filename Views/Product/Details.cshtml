@@ -1,0 +1,462 @@
+﻿@* @model ST10281011_PROG7311_POE_PART_2.Models.Product *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Product Details"; *@
+@* } *@
+
+@* <div class="page-header"> *@
+@*     <div class="container"> *@
+@*         <div class="row"> *@
+@*             <div class="col-md-12 text-center"> *@
+@*                 <h1 class="page-title">Product <span class="text-gradient">Details</span></h1> *@
+@*                 <p class="page-subtitle">View detailed information about this product</p> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+@* <div class="container py-5"> *@
+@*     <div class="row justify-content-center"> *@
+@*         <div class="col-lg-8"> *@
+@*             <div class="card shadow-lg border-0 rounded-lg"> *@
+@*                 <div class="card-header bg-gradient-primary text-white"> *@
+@*                     <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>@Html.DisplayFor(model => model.Name)</h4> *@
+@*                 </div> *@
+@*                 <div class="card-body p-5"> *@
+@*                     <div class="row"> *@
+@*                         <div class="col-md-8"> *@
+@*                             <div class="product-info"> *@
+@*                                 <div class="product-category mb-2"> *@
+@*                                     <span class="badge bg-success rounded-pill">@Html.DisplayFor(model => model.ProductType)</span> *@
+@*                                 </div> *@
+
+@*                                 <h5 class="product-description-title">Description</h5> *@
+@*                                 <p class="product-description mb-4">@Html.DisplayFor(model => model.Description)</p> *@
+
+@*                                 <div class="product-details"> *@
+@*                                     <div class="row g-4"> *@
+@*                                         <div class="col-md-6"> *@
+@*                                             <div class="detail-card"> *@
+@*                                                 <div class="detail-icon"> *@
+@*                                                     <i class="fas fa-calendar-alt"></i> *@
+@*                                                 </div> *@
+@*                                                 <div class="detail-info"> *@
+@*                                                     <span class="detail-label">Production Date</span> *@
+@*                                                     <span class="detail-value">@Html.DisplayFor(model => model.ProductionDate)</span> *@
+@*                                                 </div> *@
+@*                                             </div> *@
+@*                                         </div> *@
+
+@*                                         <div class="col-md-6"> *@
+@*                                             <div class="detail-card"> *@
+@*                                                 <div class="detail-icon"> *@
+@*                                                     <i class="fas fa-tag"></i> *@
+@*                                                 </div> *@
+@*                                                 <div class="detail-info"> *@
+@*                                                     <span class="detail-label">Price</span> *@
+@*                                                     <span class="detail-value">R @Html.DisplayFor(model => model.Price)</span> *@
+@*                                                 </div> *@
+@*                                             </div> *@
+@*                                         </div> *@
+
+@*                                         <div class="col-md-6"> *@
+@*                                             <div class="detail-card"> *@
+@*                                                 <div class="detail-icon"> *@
+@*                                                     <i class="fas fa-cubes"></i> *@
+@*                                                 </div> *@
+@*                                                 <div class="detail-info"> *@
+@*                                                     <span class="detail-label">Quantity</span> *@
+@*                                                     <span class="detail-value">@Html.DisplayFor(model => model.Quantity)</span> *@
+@*                                                 </div> *@
+@*                                             </div> *@
+@*                                         </div> *@
+
+@*                                         <div class="col-md-6"> *@
+@*                                             <div class="detail-card"> *@
+@*                                                 <div class="detail-icon"> *@
+@*                                                     <i class="fas fa-balance-scale"></i> *@
+@*                                                 </div> *@
+@*                                                 <div class="detail-info"> *@
+@*                                                     <span class="detail-label">Unit of Measure</span> *@
+@*                                                     <span class="detail-value">@Html.DisplayFor(model => model.UnitOfMeasure)</span> *@
+@*                                                 </div> *@
+@*                                             </div> *@
+@*                                         </div> *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                             </div> *@
+@*                         </div> *@
+
+@*                         <div class="col-md-4"> *@
+@*                             <div class="product-image-placeholder"> *@
+@*                                 <div class="image-container"> *@
+@*                                     @{ *@
+@*                                         string productImagePath = GetProductImage(Model.Name, Model.ProductType); *@
+@*                                     } *@
+
+@*                                     @if (!string.IsNullOrEmpty(productImagePath)) *@
+@*                                     { *@
+@*                                         <img src="@productImagePath" *@
+@*                                              alt="@Model.Name" *@
+@*                                              class="product-image" *@
+@*                                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /> *@
+@*                                     } *@
+
+@*                                     <div class="fallback-icon" style="@(string.IsNullOrEmpty(productImagePath) ? "display: flex;" : "display: none;")"> *@
+@*                                         <i class="@GetCategoryIcon(Model.ProductType) product-icon"></i> *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                                 <div class="product-type-label mt-2"> *@
+@*                                     <small class="text-muted">@Model.Name</small> *@
+@*                                 </div> *@
+@*                                 <div class="product-actions mt-4"> *@
+@*                                     @if (User.IsInRole("Farmer")) *@
+@*                                     { *@
+@*                                         <a asp-action="Edit" asp-route-id="@Model?.ProductId" class="btn btn-outline-primary w-100 mb-2"> *@
+@*                                             <i class="fas fa-edit me-2"></i>Edit *@
+@*                                         </a> *@
+@*                                     } *@
+@*                                     <a asp-action="Index" class="btn btn-outline-secondary w-100"> *@
+@*                                         <i class="fas fa-arrow-left me-2"></i>Back to List *@
+@*                                     </a> *@
+@*                                 </div> *@
+@*                             </div> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+@* <style> *@
+@*     .product-info { *@
+@*         padding-right: 2rem; *@
+@*     } *@
+
+@*     .product-description-title { *@
+@*         font-weight: 600; *@
+@*         margin-bottom: 0.5rem; *@
+@*         color: var(--primary-color); *@
+@*     } *@
+
+@*     .product-description { *@
+@*         color: #555; *@
+@*         line-height: 1.6; *@
+@*     } *@
+
+@*     .detail-card { *@
+@*         display: flex; *@
+@*         align-items: center; *@
+@*         padding: 1rem; *@
+@*         background-color: #f8f9fa; *@
+@*         border-radius: 0.5rem; *@
+@*         height: 100%; *@
+@*         transition: all 0.3s ease; *@
+@*     } *@
+
+@*         .detail-card:hover { *@
+@*             transform: translateY(-5px); *@
+@*             box-shadow: 0 5px 15px rgba(0,0,0,0.1); *@
+@*         } *@
+
+@*     .detail-icon { *@
+@*         font-size: 1.5rem; *@
+@*         color: var(--primary-color); *@
+@*         margin-right: 1rem; *@
+@*     } *@
+
+@*     .detail-info { *@
+@*         display: flex; *@
+@*         flex-direction: column; *@
+@*     } *@
+
+@*     .detail-label { *@
+@*         font-size: 0.75rem; *@
+@*         color: #6c757d; *@
+@*         margin-bottom: 0.25rem; *@
+@*     } *@
+
+@*     .detail-value { *@
+@*         font-weight: 600; *@
+@*     } *@
+
+@*     .product-image-placeholder { *@
+@*         display: flex; *@
+@*         flex-direction: column; *@
+@*         align-items: center; *@
+@*     } *@
+
+@*     .image-container { *@
+@*         width: 100%; *@
+@*         height: 200px; *@
+@*         background: linear-gradient(135deg, #e6f7e9, #c8e6c9); *@
+@*         border-radius: 1rem; *@
+@*         display: flex; *@
+@*         align-items: center; *@
+@*         justify-content: center; *@
+@*         position: relative; *@
+@*         overflow: hidden; *@
+@*         box-shadow: 0 4px 8px rgba(0,0,0,0.1); *@
+@*     } *@
+
+@*     .product-image { *@
+@*         width: 100%; *@
+@*         height: 100%; *@
+@*         object-fit: cover; *@
+@*         border-radius: 1rem; *@
+@*         transition: transform 0.3s ease; *@
+@*     } *@
+
+@*         .product-image:hover { *@
+@*             transform: scale(1.05); *@
+@*         } *@
+
+@*     .fallback-icon { *@
+@*         width: 100%; *@
+@*         height: 100%; *@
+@*         display: flex; *@
+@*         align-items: center; *@
+@*         justify-content: center; *@
+@*         background: linear-gradient(135deg, #e6f7e9, #c8e6c9); *@
+@*     } *@
+
+@*     .product-icon { *@
+@*         font-size: 4rem; *@
+@*         color: var(--primary-color); *@
+@*     } *@
+
+@*     .product-type-label { *@
+@*         text-align: center; *@
+@*         font-weight: 500; *@
+@*     } *@
+@* </style> *@
+@model ST10281011_PROG7311_POE_PART_2.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="page-title">Product <span class="text-gradient">Details</span></h1>
+                <p class="page-subtitle">View detailed information about this product</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>@Html.DisplayFor(model => model.Name)</h4>
+                </div>
+                <div class="card-body p-5">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="product-info">
+                                <div class="product-category mb-2">
+                                    <span class="badge bg-success rounded-pill">@Html.DisplayFor(model => model.ProductType)</span>
+                                </div>
+
+                                <h5 class="product-description-title">Description</h5>
+                                <p class="product-description mb-4">@Html.DisplayFor(model => model.Description)</p>
+
+                                <div class="product-details">
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <div class="detail-card">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </div>
+                                                <div class="detail-info">
+                                                    <span class="detail-label">Production Date</span>
+                                                    <span class="detail-value">@Html.DisplayFor(model => model.ProductionDate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="detail-card">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-tag"></i>
+                                                </div>
+                                                <div class="detail-info">
+                                                    <span class="detail-label">Price</span>
+                                                    <span class="detail-value">R @Html.DisplayFor(model => model.Price)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="detail-card">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-cubes"></i>
+                                                </div>
+                                                <div class="detail-info">
+                                                    <span class="detail-label">Quantity</span>
+                                                    <span class="detail-value">@Html.DisplayFor(model => model.Quantity)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="detail-card">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-balance-scale"></i>
+                                                </div>
+                                                <div class="detail-info">
+                                                    <span class="detail-label">Unit of Measure</span>
+                                                    <span class="detail-value">@Html.DisplayFor(model => model.UnitOfMeasure)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="product-image-placeholder">
+                                <div class="image-container">
+                                    @if (!string.IsNullOrEmpty(ViewBag.ProductImagePath))
+                                    {
+                                        <img src="@ViewBag.ProductImagePath"
+                                             alt="@Model.Name"
+                                             class="product-image"
+                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                                    }
+
+                                    <div class="fallback-icon" style="@(string.IsNullOrEmpty(ViewBag.ProductImagePath) ? "display: flex;" : "display: none;")">
+                                        <i class="@ViewBag.CategoryIcon product-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="product-type-label mt-2">
+                                    <small class="text-muted">@Model.Name</small>
+                                </div>
+                                <div class="product-actions mt-4">
+                                    @if (User.IsInRole("Farmer"))
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@Model?.ProductId" class="btn btn-outline-primary w-100 mb-2">
+                                            <i class="fas fa-edit me-2"></i>Edit
+                                        </a>
+                                    }
+                                    <a asp-action="Index" class="btn btn-outline-secondary w-100">
+                                        <i class="fas fa-arrow-left me-2"></i>Back to List
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-info {
+        padding-right: 2rem;
+    }
+
+    .product-description-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+
+    .product-description {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .detail-card {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+    .detail-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-right: 1rem;
+    }
+
+    .detail-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detail-label {
+        font-size: 0.75rem;
+        color: #6c757d;
+        margin-bottom: 0.25rem;
+    }
+
+    .detail-value {
+        font-weight: 600;
+    }
+
+    .product-image-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #e6f7e9, #c8e6c9);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
+    .fallback-icon {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e6f7e9, #c8e6c9);
+    }
+
+    .product-icon {
+        font-size: 4rem;
+        color: var(--primary-color);
+    }
+
+    .product-type-label {
+        text-align: center;
+        font-weight: 500;
+    }
+</style>

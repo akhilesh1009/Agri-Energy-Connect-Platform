@@ -1,0 +1,110 @@
+﻿@model ST10281011_PROG7311_POE_PART_2.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="page-title">Edit <span class="text-gradient">Product</span></h1>
+                <p class="page-subtitle">Update your product information</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Product Information</h4>
+                </div>
+                <div class="card-body p-5">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        <input type="hidden" asp-for="ProductId" />
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Name" class="form-label">Product Name</label>
+                                    <input asp-for="Name" class="form-control" id="inputName" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputProductType" class="form-label">Product Category</label>
+                                    <select asp-for="ProductType" class="form-select form-control-lg" id="inputProductType" asp-items="Html.GetEnumSelectList<ProductCategories>()">
+                                    </select>
+                                    <span asp-validation-for="ProductType" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" id="inputDescription" style="height: 100px"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="ProductionDate" class="form-label">Production Date</label>
+                                    <input asp-for="ProductionDate" type="date" class="form-control" id="inputProductionDate" />
+                                    <span asp-validation-for="ProductionDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Price" class="form-label">Price</label>
+                                    <input asp-for="Price" type="number" step="0.01" class="form-control" id="inputPrice" placeholder="Price" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Quantity" class="form-label">Quantity</label>
+                                    <input asp-for="Quantity" type="number" class="form-control" id="inputQuantity" placeholder="Quantity" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputUnitOfMeasure" class="form-label">Unit of Measure</label>
+                                    <select asp-for="UnitOfMeasure" class="form-select form-control-lg" id="inputUnitOfMeasure" asp-items="Html.GetEnumSelectList<UnitOfMeasure>()">
+                                    </select>
+                                    <span asp-validation-for="UnitOfMeasure" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

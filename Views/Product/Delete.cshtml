@@ -1,0 +1,105 @@
+﻿@model ST10281011_PROG7311_POE_PART_2.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="page-title">Delete <span class="text-gradient">Product</span></h1>
+                <p class="page-subtitle">Are you sure you want to delete this product?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Confirm Deletion</h4>
+                </div>
+                <div class="card-body p-5">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-circle me-2"></i>This action cannot be undone. Please confirm that you want to permanently delete this product.
+                    </div>
+
+                    <div class="product-details mt-4">
+                        <h5 class="card-title mb-4">Product Details</h5>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.Name)</span>
+                                    <span class="detail-value fw-bold">@Html.DisplayFor(model => model.Name)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.ProductType)</span>
+                                    <span class="detail-value">@Html.DisplayFor(model => model.ProductType)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.ProductionDate)</span>
+                                    <span class="detail-value">@Html.DisplayFor(model => model.ProductionDate)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.Price)</span>
+                                    <span class="detail-value">R @Html.DisplayFor(model => model.Price)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.Quantity)</span>
+                                    <span class="detail-value">@Html.DisplayFor(model => model.Quantity) @Html.DisplayFor(model => model.UnitOfMeasure)</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="detail-item">
+                                    <span class="detail-label">@Html.DisplayNameFor(model => model.Description)</span>
+                                    <span class="detail-value">@Html.DisplayFor(model => model.Description)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form asp-action="Delete" class="mt-4">
+                        <input type="hidden" asp-for="ProductId" />
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to List
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt me-2"></i>Delete Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .detail-item {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detail-label {
+        font-size: 0.875rem;
+        color: #6c757d;
+        margin-bottom: 0.25rem;
+    }
+
+    .detail-value {
+        font-size: 1rem;
+    }
+</style>

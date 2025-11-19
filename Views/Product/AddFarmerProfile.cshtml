@@ -1,0 +1,84 @@
+﻿@model ST10281011_PROG7311_POE_PART_2.Models.AddFarmerViewModel
+
+@{
+    ViewData["Title"] = "Add Farmer";
+}
+
+    @* Improvements for data anotations and validation assisted by ChatGPT (OpenAI, 2025). See README File for Details. *@
+    @* OpenAI ChatGpt. 2025. *@
+    @* <https: //chatgpt.com/share/68232d50-0be4-800d-b0f4-421cc236ce20> *@
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="page-title">Add New <span class="text-gradient">Farmer</span></h1>
+                <p class="page-subtitle">Create a new farmer account to join our sustainable agriculture community</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i>Farmer Registration</h4>
+                </div>
+                <div class="card-body p-5">
+                    <form asp-action="AddFarmerProfile" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input asp-for="UserName" class="form-control" id="inputUserName" placeholder="Username" />
+                                    <label asp-for="UserName">Username</label>
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="Email" class="form-control" id="inputEmail" placeholder="name@example.com" />
+                                    <label asp-for="Email">Email address</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input asp-for="PhoneNumber" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" />
+                                    <label asp-for="PhoneNumber">Phone Number</label>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="Password" class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                    <label asp-for="Password">Password</label>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary pulse-btn">
+                                <i class="fas fa-user-plus me-2"></i>Create Farmer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

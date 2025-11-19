@@ -1,0 +1,116 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="page-title">Welcome <span class="text-gradient">Back</span></h1>
+                <p class="page-subtitle">Sign in to access your Agri-Energy Connect account</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>Account Login</h4>
+                </div>
+                <div class="card-body p-5">
+                    <form id="account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                            <label asp-for="Input.Password" class="form-label">Password</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" asp-for="Input.RememberMe" id="rememberMe" />
+                            <label class="form-check-label" asp-for="Input.RememberMe" for="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button id="login-submit" type="submit" class="btn btn-primary btn-lg pulse-btn">
+                                <i class="fas fa-sign-in-alt me-2"></i>Log in
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <a id="forgot-password" asp-page="./ForgotPassword" class="text-decoration-none text-success">
+                                <i class="fas fa-key me-1"></i>Forgot your password?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="col-lg-5 mt-4 mt-lg-0">
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-header bg-gradient-secondary text-white">
+                        <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>About Agri-Energy Connect</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h5>Bridging Sustainable Agriculture with Green Energy</h5>
+                        </div>
+
+                        <p class="card-text">Join our platform to connect with farmers, energy experts, and enthusiasts to collaborate on sustainable farming and renewable energy initiatives.</p>
+
+                        <div class="benefits mt-4">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Access sustainable farming resources</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Discover green energy solutions</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Connect with like-minded professionals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+<style>
+    .bg-gradient-secondary {
+        background: linear-gradient(90deg, #ff9800, #f57c00);
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
